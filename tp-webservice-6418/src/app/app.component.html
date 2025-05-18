@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">{{ title }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/noticias" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Noticias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/card-maker" routerLinkActive="active">Card Maker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/conversor" routerLinkActive="active">Conversor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/generador-imagen" routerLinkActive="active">Generador Imagen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mi-api" routerLinkActive="active">API a Elección</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>
