@@ -1,0 +1,17 @@
+<h2>Buscar autos por modelo</h2>
+
+<form (submit)="buscarAuto()">
+  <input type="text" [(ngModel)]="busqueda" name="busqueda" placeholder="Ej: ford, hilux, etc." />
+  <button type="submit">Buscar</button>
+</form>
+
+<hr />
+
+<div *ngIf="autos.length === 0">No se encontraron resultados.</div>
+
+<div *ngFor="let auto of autos" class="auto-card">
+  <h3>{{ auto.title }}</h3>
+<img [src]="auto.image" alt="{{ auto.title }}" width="300" height="200" />
+  <p>{{ auto.content }}</p>
+  <p>{{ auto.additional }}</p>
+</div>
