@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-
+import { environment } from '../componentes/llave-api';
 @Injectable({
   providedIn: 'root'
 })
 export class NoticiasService {
   private url = 'https://livescore6.p.rapidapi.com/news/v2/list';
   private headers = new HttpHeaders({
-    'X-RapidAPI-Key': '6b3b29a387msh8fdeb3762e3597fp18917ajsn7a3576dc8a81',
+  'X-RapidAPI-Key': environment.rapidApiKey,
     'X-RapidAPI-Host': 'livescore6.p.rapidapi.com'
   });
 
