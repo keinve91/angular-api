@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../componentes/llave-api';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AutosService {
 
   private headers = new HttpHeaders({
     'x-rapidapi-host': 'cars-database-with-image.p.rapidapi.com',
-    'x-rapidapi-key': '6b3b29a387msh8fdeb3762e3597fp18917ajsn7a3576dc8a81'
+    'x-rapidapi-key': environment.rapidApiKey
   });
 
   constructor(private http: HttpClient) {}

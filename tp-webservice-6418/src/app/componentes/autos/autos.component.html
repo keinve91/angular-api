@@ -1,17 +1,35 @@
-<h2>Buscar autos por modelo</h2>
+<h2 class="mb-4">Buscar autos por modelo</h2>
 
-<form (submit)="buscarAuto()">
-  <input type="text" [(ngModel)]="busqueda" name="busqueda" placeholder="Ej: ford, hilux, etc." />
-  <button type="submit">Buscar</button>
+<form class="mb-4 row g-2 align-items-center" (submit)="buscarAuto()">
+  <div class="col-auto">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="busqueda"
+      name="busqueda"
+      placeholder="Ej: ford, hilux, etc."
+    />
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-primary">Buscar</button>
+  </div>
 </form>
 
 <hr />
 
-<div *ngIf="autos.length === 0">No se encontraron resultados.</div>
+<div *ngIf="autos.length === 0" class="alert alert-warning">
+  No se encontraron resultados.
+</div>
 
-<div *ngFor="let auto of autos" class="auto-card">
-  <h3>{{ auto.title }}</h3>
-<img [src]="auto.image" alt="{{ auto.title }}" width="300" height="200" />
-  <p>{{ auto.content }}</p>
-  <p>{{ auto.additional }}</p>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div *ngFor="let auto of autos" class="col">
+    <div class="card h-100">
+      <img [src]="auto.image" class="card-img-top" [alt]="auto.title" />
+      <div class="card-body">
+        <h5 class="card-title">{{ auto.title }}</h5>
+        <p class="card-text">{{ auto.content }}</p>
+        <p class="card-text"><small class="text-muted">{{ auto.additional }}</small></p>
+      </div>
+    </div>
+  </div>
 </div>
