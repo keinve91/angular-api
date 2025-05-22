@@ -1,0 +1,13 @@
+<h2>Validación de Teléfono</h2>
+<input type="text" [(ngModel)]="numeroIngresado" placeholder="Ej: 1134567890" />
+<button (click)="verificarTelefono()">Verificar Teléfono</button>
+<p *ngIf="mensajeTelefono" [style.color]="telefonoValido === false ? 'red' : 'green'">
+  {{ mensajeTelefono }}
+</p>
+
+<h2>Validación de Correo Electrónico</h2>
+<input type="email" [(ngModel)]="correoIngresado" placeholder="Ej: ejemplo@correo.com" />
+<button (click)="verificarCorreo()">Verificar Correo</button>
+<p *ngIf="mensajeCorreo" [style.color]="correoValido === false ? 'red' : 'green'">
+  {{ mensajeCorreo }}
+</p>

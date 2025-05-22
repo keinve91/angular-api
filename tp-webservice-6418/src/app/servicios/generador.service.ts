@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { GoogleGenAI, Modality } from '@google/genai';
-
+import { environment } from '../componentes/llave-api';
 @Injectable({
   providedIn: 'root'
 })
 
 export class GeneradorService {
-  private ia = new GoogleGenAI({ apiKey: 'AIzaSyDwp2Yjv7lzrJNqRD-PihBVOUDRxysNklk' });
+  private ia = new GoogleGenAI({ apiKey: environment.geminiapiKey });
 
   async generarImagenConTexto(textoSolicitud: string): Promise<any> {
     const respuesta = await this.ia.models.generateContent({
