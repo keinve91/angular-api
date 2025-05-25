@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // para ngModel
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AutosService } from '../../servicios/autos.service';
 
@@ -21,7 +21,7 @@ export class AutosComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const query = params['q'] || 'toyota';
-      this.busqueda = query; // mostrar en input
+      this.busqueda = query;
       const page = parseInt(params['page'] || '1');
       this.autosService.buscarAutos(query, page).subscribe(data => {
         this.autos = data.results.slice(0, 5);

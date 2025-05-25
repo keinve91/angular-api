@@ -13,24 +13,20 @@
       placeholder="Ejemplo: Un atardecer en la playa con gaviotas volando..."
     ></textarea>
 
-    <button type="submit" [disabled]="cargando || !textoUsuario">
+    <button type="submit" [disabled]="cargando || !textoUsuario.trim()">
       {{ cargando ? 'Generando...' : 'Generar Imagen' }}
     </button>
   </form>
 
-  <div *ngIf="textoGenerado || fuenteImagen" class="resultado">
-    <div *ngIf="textoGenerado">
-      <h3>Descripción Generada:</h3>
-      <p>{{ textoGenerado }}</p>
+  <div class="resultado-visual mt-3"> <div *ngIf="fuenteImagen && !cargando">
+      <img [src]="fuenteImagen" alt="Imagen generada por IA" style="max-width: 100%; height: auto;" />
     </div>
 
-    <div *ngIf="fuenteImagen">
-      <h3>Imagen Generada:</h3>
-      <img [src]="fuenteImagen" alt="Imagen generada por IA" />
-    </div>
-  </div>
+    <div *ngIf="cargando" class="cargando text-center"> <p>Procesando solicitud...</p>
+      </div>
 
-  <div *ngIf="cargando" class="cargando">
-    <p>Procesando solicitud...</p>
+    <div *ngIf="!fuenteImagen && !cargando && textoUsuario && formulario.submitted" class="alerta-sin-imagen mt-2">
+      </div>
+
   </div>
 </div>
