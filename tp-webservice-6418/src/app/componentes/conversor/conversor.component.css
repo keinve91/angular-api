@@ -1,0 +1,43 @@
+.conversor-card {
+    background: #ffffff;
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    border: none; /* Quitamos el borde por defecto del card si no gusta con la sombra */
+    overflow: hidden; /* Para que el header con gradiente no se salga */
+  }
+
+  .conversor-card .card-header {
+    background: linear-gradient(45deg, #0d6efd, #0dcaf0); /* Gradiente fachero */
+    color: white;
+    border-bottom: none; /* Sin borde inferior en el header */
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .conversor-card .card-body {
+    padding: 2rem; /* Más padding interno */
+  }
+
+  .form-control-lg, .form-select-lg { /* Estas clases se añaden, no modifican atributos existentes */
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    font-size: 1.1rem; /* Inputs un poco más grandes */
+  }
+
+  .btn-convertir { /* Clase adicional para el botón */
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease; /* Transición suave para hover */
+  }
+
+  .btn-convertir:hover {
+    transform: translateY(-2px); /* Pequeño efecto al pasar el mouse */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .alert-resultado { /* Clase adicional para el alert */
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 1rem;
+  }

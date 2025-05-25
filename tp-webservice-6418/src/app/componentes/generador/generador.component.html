@@ -1,0 +1,32 @@
+<div class="contenedor">
+  <h2>Generador de Imagen con IA</h2>
+
+  <form (ngSubmit)="generar()" #formulario="ngForm">
+    <label for="texto">Ingrese una descripción:</label>
+    <textarea
+      id="texto"
+      [(ngModel)]="textoUsuario"
+      name="textoUsuario"
+      required
+      rows="4"
+      cols="50"
+      placeholder="Ejemplo: Un atardecer en la playa con gaviotas volando..."
+    ></textarea>
+
+    <button type="submit" [disabled]="cargando || !textoUsuario.trim()">
+      {{ cargando ? 'Generando...' : 'Generar Imagen' }}
+    </button>
+  </form>
+
+  <div class="resultado-visual mt-3"> <div *ngIf="fuenteImagen && !cargando">
+      <img [src]="fuenteImagen" alt="Imagen generada por IA" style="max-width: 100%; height: auto;" />
+    </div>
+
+    <div *ngIf="cargando" class="cargando text-center"> <p>Procesando solicitud...</p>
+      </div>
+
+    <div *ngIf="!fuenteImagen && !cargando && textoUsuario && formulario.submitted" class="alerta-sin-imagen mt-2">
+      </div>
+
+  </div>
+</div>

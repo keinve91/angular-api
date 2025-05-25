@@ -1,0 +1,124 @@
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <h1 class="mb-4 text-center">Formulario de Contacto y Validación</h1>
+
+      <form (ngSubmit)="enviarFormulario()" #form="ngForm" novalidate>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" 
+                 [(ngModel)]="nombreIngresado" 
+                 (blur)="validarNombre()" 
+                 placeholder="Ej: Juan" 
+                 [class.is-invalid]="nombreValido === false" 
+                 [class.is-valid]="nombreValido === true"
+                 required />
+          <div *ngIf="nombreValido === false && mensajeNombre" class="invalid-feedback d-block">
+            {{ mensajeNombre }}
+          </div>
+           <div *ngIf="nombreValido === true && mensajeNombre" class="valid-feedback d-block">
+            {{ mensajeNombre }}
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" class="form-control" 
+                 [(ngModel)]="apellidoIngresado" 
+                 (blur)="validarApellido()" 
+                 placeholder="Ej: Pérez" 
+                 [class.is-invalid]="apellidoValido === false" 
+                 [class.is-valid]="apellidoValido === true"
+                 required />
+          <div *ngIf="apellidoValido === false && mensajeApellido" class="invalid-feedback d-block">
+            {{ mensajeApellido }}
+          </div>
+          <div *ngIf="apellidoValido === true && mensajeApellido" class="valid-feedback d-block">
+            {{ mensajeApellido }}
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="dni" class="form-label">DNI:</label>
+          <input type="text" id="dni" name="dni" class="form-control" 
+                 [(ngModel)]="dniIngresado" 
+                 (blur)="validarDni()" 
+                 placeholder="Ej: 12345678" 
+                 [class.is-invalid]="dniValido === false" 
+                 [class.is-valid]="dniValido === true"
+                 required />
+          <div *ngIf="dniValido === false && mensajeDni" class="invalid-feedback d-block">
+            {{ mensajeDni }}
+          </div>
+           <div *ngIf="dniValido === true && mensajeDni" class="valid-feedback d-block">
+            {{ mensajeDni }}
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono:</label>
+          <div class="input-group">
+            <input type="text" id="telefono" name="telefono" class="form-control" 
+                   [(ngModel)]="numeroIngresado" 
+                   placeholder="Ej: 1134567890 (10 dígitos)" 
+                   [class.is-invalid]="telefonoValido === false && numeroIngresado" 
+                   [class.is-valid]="telefonoValido === true && numeroIngresado"
+                   required />
+            <button class="btn btn-outline-secondary" type="button" 
+                    (click)="verificarTelefonoIndividual()" 
+                    [disabled]="isLoadingTelefono || !numeroIngresado">
+              <span *ngIf="isLoadingTelefono" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              {{ isLoadingTelefono ? ' Verificando...' : 'Verificar' }}
+            </button>
+          </div>
+          <div *ngIf="mensajeTelefono" 
+               [ngClass]="{'text-danger': telefonoValido === false, 'text-success': telefonoValido === true, 'form-text': telefonoValido === null}"
+               class="mt-1">
+            {{ mensajeTelefono }}
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo Electrónico:</label>
+          <div class="input-group">
+            <input type="email" id="correo" name="correo" class="form-control" 
+                   [(ngModel)]="correoIngresado" 
+                   placeholder="Ej: ejemplo@correo.com" 
+                   [class.is-invalid]="correoValido === false && correoIngresado" 
+                   [class.is-valid]="correoValido === true && correoIngresado"
+                   required />
+            <button class="btn btn-outline-secondary" type="button" 
+                    (click)="verificarCorreoIndividual()" 
+                    [disabled]="isLoadingCorreo || !correoIngresado">
+               <span *ngIf="isLoadingCorreo" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+              {{ isLoadingCorreo ? ' Verificando...' : 'Verificar' }}
+            </button>
+          </div>
+           <div *ngIf="mensajeCorreo" 
+               [ngClass]="{'text-danger': correoValido === false, 'text-success': correoValido === true, 'form-text': correoValido === null}"
+               class="mt-1">
+            {{ mensajeCorreo }}
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <button class="btn btn-primary btn-lg" type="submit" [disabled]="isSubmitting">
+            <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            {{ isSubmitting ? ' Enviando...' : 'Enviar Formulario' }}
+          </button>
+        </div>
+      </form>
+
+      <div *ngIf="mensajeFormulario" 
+           class="alert mt-4"
+           [ngClass]="{'alert-success': formularioAceptado, 'alert-danger': !formularioAceptado}"
+           role="alert">
+        {{ mensajeFormulario }}
+      </div>
+       <div *ngIf="formularioAceptado" class="text-center mt-3">
+          <button class="btn btn-outline-info" (click)="resetFormFields()">Limpiar Formulario</button>
+      </div>
+
+    </div>
+  </div>
+</div>

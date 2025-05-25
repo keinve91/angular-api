@@ -1,0 +1,24 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100 py-4">
+  <div class="card conversor-card" style="width: 100%; max-width: 500px;">
+    <div class="card-header text-center">
+      <h2 class="mb-0">Conversor de Monedas</h2>
+    </div>
+    <div class="card-body">
+      <div class="mb-4"> <label class="form-label fw-semibold">Monto:</label> <input type="number" class="form-control form-control-lg" [(ngModel)]="monto" min="0" />
+      </div>
+      <div class="mb-4"> <label class="form-label fw-semibold">Moneda Origen:</label> <select class="form-select form-select-lg" [(ngModel)]="monedaOrigen">
+          <option *ngFor="let m of monedas" [value]="m">{{ m }}</option>
+        </select>
+      </div>
+      <div class="mb-4"> <label class="form-label fw-semibold">Moneda Destino:</label> <select class="form-select form-select-lg" [(ngModel)]="monedaDestino">
+          <option *ngFor="let m of monedas" [value]="m">{{ m }}</option>
+        </select>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary btn-lg btn-convertir mb-3" (click)="convertir()">Convertir</button> </div>
+      <div *ngIf="resultado !== null" class="alert alert-success alert-resultado mt-4">
+        Resultado: ${{ resultado }} {{ monedaDestino }}
+      </div>
+    </div>
+  </div>
+</div>
